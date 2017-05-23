@@ -1,0 +1,407 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+		
+<title>cherish & hsirehc</title>
+
+
+<script src="timeline/js/jquery.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700');
+
+/* _variables.css */
+
+/* _mixins.css */
+
+/* _global.css */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: -webkit-linear-gradient(right, #000 , #000);
+  background: linear-gradient(to left, #BE93C5 , #7BC6CC);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* _site-header.css */
+.site-header {
+  text-align: center;
+  padding: 40px 0;
+
+}
+.site-header__title {
+  font-size: 36px;
+  color: #fff;
+}
+
+/* _wrapper.css */
+.wrapper {
+  padding-left: 18px;
+  padding-right: 18px;
+  max-width: 1236px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* _timeline.css */
+.timeline {
+  position: relative;
+  margin: 30px auto;
+  padding: 60px 0;
+
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 4px;
+  height: 100%;
+  background-color: #8d94b1;
+}
+@media (min-width: 800px){
+  .timeline::before{
+    left: 50%;
+    margin-left: -2px;
+  }
+}
+.timeline__item {
+  margin-bottom: 100px;
+  position: relative;
+}
+.timeline__item::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.timeline__item:nth-child(2n) .timeline__item__content {
+  float: right;
+}
+.timeline__item:nth-child(2n) .timeline__item__content::before {
+  content: '';
+  right: 40%;
+}
+@media (min-width: 800px){
+  .timeline__item:nth-child(2n) .timeline__item__content::before{
+    left: inherit;
+  }
+}
+.timeline__item:nth-child(2n) .timeline__item__content__date {
+  background-color: #b292c5;
+}
+.timeline__item:nth-child(2n) .timeline__item__content__description {
+  color: #b292c5;
+}
+.timeline__item:last-child {
+  margin-bottom: 0;
+}
+.timeline__item-bg {
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  color: #fff;
+}
+.timeline__item-bg:nth-child(2n) .timeline__item__station {
+  background-color: #b292c5;
+}
+.timeline__item-bg:nth-child(2n) .timeline__item__content {
+  background-color: #b292c5;
+}
+.timeline__item-bg:nth-child(2n) .timeline__item__content::before {
+  background-color: #b292c5;
+}
+.timeline__item-bg:nth-child(2n) .timeline__item__content__description {
+  color: #fff;
+}
+.timeline__item-bg .timeline__item__station {
+  background-color: #65adb7;
+}
+.timeline__item-bg .timeline__item__content {
+  background-color: #65adb7;
+}
+.timeline__item-bg .timeline__item__content::before {
+  background-color: #65adb7;
+}
+.timeline__item-bg .timeline__item__content__description {
+  color: #fff;
+}
+.timeline__item__station {
+  background-color: #9aa0b9;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px;
+  top: 0;
+  left: 10%;
+  margin-left: -33px;
+  border: 4px solid #8d94b1;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+@media (min-width: 800px){
+  .timeline__item__station{
+    left: 50%;
+    margin-left: -30px;
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+    border-width: 6px;
+  }
+}
+.timeline__item__content {
+  width: 80%;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 6px;
+  float: right;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+@media (min-width: 800px){
+  .timeline__item__content{
+    width: 40%;
+    float: inherit;
+    padding: 30px 40px;
+  }
+}
+.timeline__item__content::before {
+  content: '';
+  position: absolute;
+  left: 10%;
+  background: #8d94b1;
+  top: 20px;
+  width: 10%;
+  height: 4px;
+  z-index: -1;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+@media (min-width: 800px){
+  .timeline__item__content::before{
+    left: 40%;
+    top: 30px;
+    height: 4px;
+    margin-top: -2px;
+  }
+}
+.timeline__item__content__date {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  background-color: #65adb7;
+  color: #fff;
+  display: inline-block;
+  border-radius: 4px;
+  border: 2px solid #fff;
+}
+.timeline__item__content__description {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  color: #65adb7;
+}
+@media (min-width: 800px){
+  .timeline__item__content__description{
+    font-size: 19px;
+    line-height: 28px;
+  }
+}
+
+/* _site-footer.css */
+.site-footer {
+  padding: 50px 0 200px 0;
+
+}
+.site-footer__text {
+  color: #e6e6e6;
+  font-size: 14px;
+  text-align: center;
+}
+.site-footer__text__link {
+  color: #8287a9;
+}
+</style>
+
+</head>
+<body>
+
+<script src="timeline/js/jquery.waypoints.min.js"></script>
+
+<header class="site-header">
+  <div class="wrapper">
+    <h1 class="site-header__title">开发者日记</h1>
+  </div>
+</header>
+
+<section class="timeline">
+  <div class="wrapper">
+    <div class="timeline__item timeline__item--0">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar. 6</h2>
+        <p class="timeline__item__content__description">从今天开始，计划做一个属于我们的网站，正好最近公司让我做网站，我感觉我也能做一个给你</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--1">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar. 7</h2>
+        <p class="timeline__item__content__description">哇，这个前端好艰难，我发现自己要做个网站，
+		要学html，javascript和css。炸裂，先从html开始吧，然后再js，再css，怎么办，好怕赶不到524之前</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--2">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar. 8</h2>
+        <p class="timeline__item__content__description">今天学CSS</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--3">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 9</h2>
+        <p class="timeline__item__content__description">CSS学的差不多了，感觉应该能学JS了，为啥前端这么困难？</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--4">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 10</h2>
+        <p class="timeline__item__content__description">总算做了一个小的页面在浏览器上看了一下吧</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--5">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 11</h2>
+        <p class="timeline__item__content__description">今天周六不想上班，明天写代码吧。。。/p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--6">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 12</h2>
+        <p class="timeline__item__content__description">今天母亲节，我给我妈打电话，她居然觉得不是我主动打的。不开心，今天休息！！！！</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--7">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 13</h2>
+        <p class="timeline__item__content__description"> 周一，好累啊，今天搭建网站框架吧，我的天，时间不多了啊，感觉每天赶代码都赶不完啊。</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--8">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 14</h2>
+        <p class="timeline__item__content__description">累死了，把整个网站的主题色，框架搭好了，明天做点动态效果，这两天公司事好多，都没有和老婆聊天，哇</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--9">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 15</h2>
+        <p class="timeline__item__content__description">网上看到别人一个动态框架，感觉比我这个炫酷啊，借鉴借鉴代码，哈哈哈哈哈哈。哇，回来这么晚还要赶网站代码，好累啊</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--10">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 16</h2>
+        <p class="timeline__item__content__description"> 今天做一个时间轴，作为以后填补的开发者日记，我简直机智啊，我是天才吧？ 操，两点了！睡觉睡觉</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--11">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 17</h2>
+        <p class="timeline__item__content__description">主题页内容填充好难啊，这几天又要加班，我的天，我感觉这个网站开发不完了，要死要死。。。。</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--12">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 18</h2>
+        <p class="timeline__item__content__description">卧槽，为啥这个网站出了个bug，我擦，还没时间修改，晚上加班又加的好晚。。。</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--13">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 19</h2>
+        <p class="timeline__item__content__description">做一个2048模块吧，嘿嘿，她没事可以上网站玩玩游戏，我简直机智啊，搜下模块搜下模块~赞自己一下</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--14">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 20</h2>
+        <p class="timeline__item__content__description">今天把网站的域名买了，配置了好久啊我得天。好不容易周末了，好想休息啊，老婆还觉得我不陪她，对我发脾气，不开心啊啊啊啊啊啊</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--15">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 21</h2>
+        <p class="timeline__item__content__description">今天休息！</p>
+      </div>
+    </div>
+    <div class="timeline__item timeline__item--16">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 22</h2>
+        <p class="timeline__item__content__description">不行了，网站我觉得我开发不完了，还有好几个功能没做，今天又开会开到十点半到家，我的天。</p>
+      </div>
+    </div>
+	<div class="timeline__item timeline__item--16">
+      <div class="timeline__item__station"></div>
+      <div class="timeline__item__content">
+        <h2 class="timeline__item__content__date">2017 Mar 23</h2>
+        <p class="timeline__item__content__description">我爱你珍</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function customWayPoint(className, addClassName, customOffset) {
+  var waypoints = $(className).waypoint({
+    handler: function(direction) {
+      if (direction == "down") {
+        $(className).addClass(addClassName);
+      } else {
+        $(className).removeClass(addClassName);
+      }
+    },
+    offset: customOffset
+  });
+}
+
+var defaultOffset = '50%';
+
+for (i = 0; i < 17; i++) {
+  customWayPoint('.timeline__item--' + i, 'timeline__item-bg', defaultOffset);
+}
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+	<h2 class="timeline__item__content__date"><a href="index.html">Home</a></h2>
+</div>
+
+</body>
+</html>
+
